@@ -10,7 +10,6 @@ typedef struct {
     bool full;
 } MyCircularQueue;
 
-
 MyCircularQueue* myCircularQueueCreate(int k) {
     MyCircularQueue *queue = (MyCircularQueue*) malloc(sizeof(MyCircularQueue));
 

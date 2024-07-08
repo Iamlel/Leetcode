@@ -15,7 +15,7 @@ MyCircularQueue* myCircularQueueCreate(int k) {
 
     queue->ptr = (int*) malloc(k * sizeof(int));
     for (int i = 0; i < k; i++) {
-        *(queue->ptr + i) = -1;
+        queue->ptr[i] = -1;
     }
     queue->capacity = k;
 
@@ -31,7 +31,7 @@ bool myCircularQueueEnQueue(MyCircularQueue* obj, int value) {
         return false;
     }
 
-    *(obj->ptr + obj->head) = value;
+    obj->ptr[obj->head] = value;
     obj->head = (obj->head + 1) % obj->capacity;
 
     if (obj->head - obj->tail == 0) { 
@@ -46,7 +46,7 @@ bool myCircularQueueDeQueue(MyCircularQueue* obj) {
         return false;
     }
 
-    *(obj->ptr + obj->tail) = -1;
+    obj->ptr[obj->tail] = -1;
     obj->tail = (obj->tail + 1) % obj->capacity;
     obj->full = false;
 
@@ -54,12 +54,12 @@ bool myCircularQueueDeQueue(MyCircularQueue* obj) {
 }
 
 int myCircularQueueFront(MyCircularQueue* obj) {
-    return *(obj->ptr + obj->tail);
+    return obj->ptr[obj->tail];
 }
 
 int myCircularQueueRear(MyCircularQueue* obj) {
     int head = (obj->capacity + obj->head - 1) % obj->capacity;
-    return *(obj->ptr + head);
+    return obj->ptr[head];
 }
 
 bool myCircularQueueIsEmpty(MyCircularQueue* obj) {

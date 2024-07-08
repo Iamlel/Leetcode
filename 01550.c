@@ -1,9 +1,11 @@
+#define byte char
 bool threeConsecutiveOdds(int* arr, int arrSize){
-    int tot = 0;
+    byte total = 0;
     for (int i = 0; i < arrSize; i++) {
-        if (arr[i] % 2 != 0) {  tot += 1;   }
-        else {    tot = 0;    }
-        if (tot == 3) { return true;    }
+        total = (arr[i] % 2) ? total + 1 : 0;
+        if (total == 3) {
+            return true;
+        }
     }
     return false;
 }
